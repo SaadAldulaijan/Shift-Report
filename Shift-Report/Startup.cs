@@ -37,11 +37,17 @@ namespace Shift_Report
             })
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Auth/Login";
+            });
+
             services.AddAuthorization(options => 
             {
                 options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
                 options.AddPolicy("Manager", policy => policy.RequireClaim("Manager"));
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,8 +68,9 @@ namespace Shift_Report
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

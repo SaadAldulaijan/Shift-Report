@@ -31,8 +31,10 @@ namespace Shift_Report.Controllers
         public async Task<IActionResult> Login(LoginViewModel vm)
         {
             var result = await _signInManager.PasswordSignInAsync(vm.Username, vm.Password, false, false);
+            // TODO: should redirect to returnUrl
             return RedirectToAction("Index", "Home");
         }
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
