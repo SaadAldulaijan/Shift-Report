@@ -26,8 +26,15 @@ using Shift_Report.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\Views\_ViewImports.cshtml"
+using Shift_Report.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a5625cc8fb4476f348b0fe9041c550465d8bf9", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d484b1c997a3ea787072e56d792ebc86c5b86444", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"43d2006870891af06b0615cb92e6d96a605c2fbf", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998

@@ -384,3 +384,6 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shif
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\ref\Shift-Report.dll
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.pdb
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.genruntimeconfig.cache
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\Humanizer.dll
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Auth\Login.cshtml.g.cs
