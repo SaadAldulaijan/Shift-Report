@@ -1,8 +1,409 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@{ 
+    ViewData["Title"] = "Report";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="app">
+    <main class="container">
+        <!-- Header Section -->
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#report" data-toggle="tab" id="tab-report">Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#agent" data-toggle="tab" id="tab-agent">Agent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pager" data-toggle="tab" id="tab-pager">EOD's Pager info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#code" data-toggle="tab" id="tab-emergency">Emergency Code</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#access" data-toggle="tab" id="tab-access">Access Code Usage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#announcement" data-toggle="tab" id="tab-announcement">Announcement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#notes" data-toggle="tab" id="tab-notes">Notes/Details</a>
+                </li>
+            </ul>
+        </div>
+        <!--End of Header section-->
+        <!-- Form section-->
+        <div class="tab-content">
+            <!--Report-->
+            <div class="tab-pane fade show active" id="report">
+                <!--Checklist-->
+                <div class="row">
+                    <h5>Checklist</h5>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Workplace Clean & Organized</th>
+                            <td><input v-model="checklistModel.workplace" type="checkbox"></td>
+                            <th>Directories in place& organized</th>
+                            <td><input v-model="checklistModel.directories" type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <th>Boards in place & organized</th>
+                            <td><input type="checkbox" v-model="checklistModel.boards"></td>
+                            <th>FAX 31455</th>
+                            <td><input type="checkbox" v-model="checklistModel.fax1"></td>
+                        </tr>
+                        <tr>
+                            <th>FAX 858-0037</th>
+                            <td><input class="small" type="checkbox" v-model="checklistModel.fax2"></td>
+                            <th>Emergency line 32999</th>
+                            <td><input type="checkbox" v-model="checklistModel.emergencyline"></td>
+                        </tr>
+                        <tr>
+                            <th>Hoteline 911</th>
+                            <td><input type="checkbox" v-model="checklistModel.hotline"></td>
+                            <th>Backup hotline 30045</th>
+                            <td><input type="checkbox" v-model="checklistModel.backuphotline"></td>
+                        </tr>
+                        <tr>
+                            <th>Code Yellow 32322</th>
+                            <td><input type="checkbox" v-model="checklistModel.codeyellow"></td>
+                            <th>Paging Phone 30043</th>
+                            <td><input type="checkbox" v-model="checklistModel.pagingtelephone"></td>
+                        </tr>
+                        <tr>
+                            <th>Overhead Announcement</th>
+                            <td><input type="checkbox" v-model="checklistModel.overhead"></td>
+                        </tr>
+                    </table>
+                </div>
+                <!--Equipment-->
+                <div class="row">
+                    <h5>Equipment</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Issued Batteries</th>
+                                <td><input class="small" v-model="checklistModel.noofbattery"></td>
+                                <th>Available Pagers</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofpager"></td>
+                            </tr>
+                            <tr>
+                                <th>No. of Undelivered FAX</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofundeliveredfax"></td>
+                                <th>No. of Dictaphones</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofdictaphone"></td>
+                            </tr>
+                            <tr>
+                                <th>No. of Headphones</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofheadphone"></td>
+                                <th>No. of Radiophones</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofradiophones"></td>
+                            </tr>
+                            <tr>
+                                <th>No. of Radiophones Charger</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofradiophonescharger"></td>
+                                <th>No. of Remote Control</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofremotecontrol"></td>
+                            </tr>
+                            <tr>
+                                <th>No. of Chairs</th>
+                                <td><input class="small" type="number" v-model="checklistModel.noofchair"></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <button @@click="addChecklist(checklistModel)" class="btn btn-primary">Save & Next</button>
+            </div>
+            <!--End of Report-->
+            <!--Agent-->
+            <div class="tab-pane fade" id="agent">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Agent</th>
+                                <td>
+                                    <select v-model="breakModel.agentName">
+                                        <option v-for="agent in agents">{{agent.name}}</option>
+                                    </select>
+                                </td>
+                                <th>OUT</th>
+                                <td><input type="time" v-model="breakModel.out" /></td>
+                                <th>IN</th>
+                                <td><input type="time" v-model="breakModel.in" /></td>
+                                <th>Remark</th>
+                                <td><input v-model="breakModel.remark"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button @@click="addBreak(breakModel)" class="btn btn-primary">Add</button>
+                <button @@click="breakNext" class="btn btn-primary">Next</button>
+                <table class="table table-bordered" id="break-table">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>OUT</th>
+                            <th>IN</th>
+                            <th>Remark</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(b, index) in breaks">
+                            <td>{{b.agentName}}</td>
+                            <td>{{b.out}}</td>
+                            <td>{{b.in}}</td>
+                            <td>{{b.remark}}</td>
+                            <td><a @@click="removeBreak(index)" class="btn btn-danger text-white">Remove</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--End of Agent-->
+            <!--EOD Pager-->
+            <div class="tab-pane fade" id="pager">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <lable for="pagerReceivedFrom">Received From</lable>
+                            <input type="text" v-model="eodPagerModel.pagerreceivedfrom" class="form-control">
+                        </div>
+                        <div class="col">
+                            <lable for="pagerReceivedAt">At</lable>
+                            <input type="datetime-local" v-model="eodPagerModel.pagerreceivedat" class="form-control">
+                        </div>
+                        <div class="col">
+                            <lable for="pagerReceivedBy">Received By</lable>
+                            <select v-model="eodPagerModel.pagerreceivedby" class="form-control">
+                                <option v-for="agent in agents">{{agent.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <lable for="pagerIssuedTo">Issued To</lable>
+                            <input type="text" v-model="eodPagerModel.pagerissuedto" class="form-control">
+                        </div>
+                        <div class="col">
+                            <lable for="pagerIssuedAt">At</lable>
+                            <input type="datetime-local" v-model="eodPagerModel.pagerissuedat" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="pagerIssuedBy">Issued By</label>
+                            <select v-model="eodPagerModel.pagerissuedby" class="form-control">
+                                <option v-for="agent in agents">{{agent.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button @@click="addEodPager(eodPagerModel)" class="btn btn-primary">Save & Next</button>
+            </div>
+            <!--End of Pager-->
+            <!--Emergency Code-->
+            <div class="tab-pane fade" id="code">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <lable for="codeName">Code</lable>
+                            <!--TODO: add values for each option-->
+                            <select class="form-control" v-model="emergencyCodeModel.code">
+                                <option selected disabled></option>
+                                <option>Code Blue</option>
+                                <option>Code Red</option>
+                                <option>Code CCRT</option>
+                                <option>Code Gray</option>
+                                <option>Code Orange</option>
+                            </select>
+                            <lable for="location">Location</lable>
+                            <select class="form-control" v-model="emergencyCodeModel.location">
+                                <option></option>
+                                <option>Ward 1</option>
+                                <option>Lobby</option>
+                                <option>Ward 2</option>
+                                <option>Pharmacy</option>
+                                <option>ER</option>
+                            </select>
+                            <lable for="receivedBy">Received By</lable>
+                            <select class="form-control" v-model="emergencyCodeModel.receivedby">
+                                <option v-for="agent in agents">{{agent.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <lable for="extension">Extension</lable>
+                            <input type="number" v-model="emergencyCodeModel.callerext" class="form-control">
+                            <lable for="timeReceived">Time Received</lable>
+                            <input type="datetime-local" v-model="emergencyCodeModel.timereceived" class="form-control">
+                            <lable for="callerBadge">Caller Badge</lable>
+                            <input type="number" v-model="emergencyCodeModel.callerbadge" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <lable for="comment">Comment</lable>
+                            <input type="text" v-model="emergencyCodeModel.comment" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <button @@click="addEmergencyCode(emergencyCodeModel)" class="btn btn-primary">Add</button>
+                <button @@click="emergencyCodeNext" class="btn btn-primary">Next</button>
+                <div class="container">
+                    <table class="table table-bordered" id="emergencyTable">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Location</th>
+                                <th>Received By</th>
+                                <th>Extension</th>
+                                <th>Time Received</th>
+                                <th>Caller Badge</th>
+                                <th>Comment</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(e, i) in emergencyCodes">
+                                <td>{{e.code}}</td>
+                                <td>{{e.location}}</td>
+                                <td>{{e.receivedby}}</td>
+                                <td>{{e.callerext}}</td>
+                                <td>{{e.timereceived}}</td>
+                                <td>{{e.callerbadge}}</td>
+                                <td>{{e.comment}}</td>
+                                <td><a @@click="deleteEmergencyCode(i)" class="btn btn-danger text-white">Remove</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--End of Emergency Code-->
+            <!--Access Code-->
+            <div class="tab-pane fade" id="access">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <lable for="access-code-time">Time</lable>
+                            <input type="datetime-local" v-model="accessCodeModel.actime" class="form-control">
+                            <lable for="ac-type">AC Type</lable>
+                            <select class="form-control" v-model="accessCodeModel.accesstype">
+                                <option></option>
+                                <option>National</option>
+                                <option>International</option>
+                                <option>Local</option>
+                            </select>
+                            <lable for="caller-name">Caller Name</lable>
+                            <input type="text" v-model="accessCodeModel.callername" class="form-control">
+                        </div>
+                        <div class="col">
+                            <lable for="caller-badge">Caller Badge</lable>
+                            <input type="number" v-model="accessCodeModel.callerbadge" class="form-control">
+                            <lable for="telephone-number">Telephone Number</lable>
+                            <input type="number" v-model="accessCodeModel.telephoneno" class="form-control">
+                            <lable for="agnetTelephone">Telephone Agent</lable>
+                            <input type="number" v-model="accessCodeModel.agenttelephone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <lable for="callReceiver">Call Receiver</lable>
+                            <input type="text" v-model="accessCodeModel.callreceiver" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <button @@click="addAccessCode(accessCodeModel)" class="btn btn-primary">Add</button>
+                <button @@click="accessCodeNext" class="btn btn-primary">Next</button>
+                <div class="container">
+                    <table class="table table-bordered" id="accessCodeTable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>AC Type</th>
+                                <th>Caller Name</th>
+                                <th>Caller Badge</th>
+                                <th>Call Receiver</th>
+                                <th>Telephone Number</th>
+                                <th>Telephone Agent</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(a, i) in accessCodes">
+                                <td>{{a.actime}}</td>
+                                <td>{{a.accesstype}}</td>
+                                <td>{{a.callername}}</td>
+                                <td>{{a.callerbadge}}</td>
+                                <td>{{a.callreceiver}}</td>
+                                <td>{{a.telephoneno}}</td>
+                                <td>{{a.agenttelephone}}</td>
+                                <th><a @@click="deleteAccessCode(i)" class="btn btn-danger text-white">Remove</a></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--End of Access Code-->
+            <!--Announcement-->
+            <div class="tab-pane fade" id="announcement">
+                <div class="row">
+                    <div class="col">
+                        <label for="announcement-time">Time</label>
+                        <input class="form-control" type="datetime-local" v-model="announcementModel.datetime">
+                    </div>
+                    <div class="col">
+                        <label for="announcement-doneBy">Done By</label>
+                        <select v-model="announcementModel.doneby" class="form-control">
+                            <option v-for="agent in agents">{{agent.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="announcement-subject">Announcement</label>
+                        <textarea class="form-control" v-model="announcementModel.subject" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                <button @@click="addAnnouncement(announcementModel)" class="btn btn-primary">Add</button>
+                <button @@click="announcementNext" class="btn btn-primary">Next</button>
+                <div class="container">
+                    <table class="table table-bordered" id="announcementTable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Announcement</th>
+                                <th>Done By</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(a, i) in announcements">
+                                <td>{{a.datetime}}</td>
+                                <td>{{a.subject}}</td>
+                                <td>{{a.doneby}}</td>
+                                <td><a @@click="deleteAnnouncement(i)">Remove</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--End of Announcement-->
+            <!--Notes-->
+            <div class="tab-pane fade" id="notes">
+                <div class="container">
+                    <label for="shift">Shift</label>
+                    <select class="form-control" v-model="reportViewModel.shift">
+                        <option value="night">Night Shift</option>
+                        <option value="morning">Morning Shift</option>
+                        <option value="afternoon">Afternoon Shift</option>
+                    </select>
+                    <label for="notes">Notes/Details</label>
+                    <textarea v-model="reportViewModel.details" class="form-control" cols="50" rows="8"></textarea>
+                    <button @@click="generateReport(reportViewModel)" class="btn btn-primary">
+                        <span class="spinner-border spinner-border-sm" role="status" v-if="loading"></span>
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+            <!--End of Notes-->
+        </div>
+        <!-- End of Form section-->
+    </main>
 </div>

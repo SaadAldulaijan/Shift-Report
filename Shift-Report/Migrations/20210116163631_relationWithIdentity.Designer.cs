@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shift_Report;
 
 namespace Shift_Report.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210116163631_relationWithIdentity")]
+    partial class relationWithIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,18 +259,21 @@ namespace Shift_Report.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("AspNetUsersId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("BadgeNo")
                         .HasColumnType("int");
-
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityUserId");
+                    b.HasIndex("AspNetUsersId");
 
                     b.ToTable("Agent");
                 });
@@ -573,7 +578,7 @@ namespace Shift_Report.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "AspNetUsers")
                         .WithMany()
-                        .HasForeignKey("IdentityUserId");
+                        .HasForeignKey("AspNetUsersId");
 
                     b.Navigation("AspNetUsers");
                 });

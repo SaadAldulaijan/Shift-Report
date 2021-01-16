@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shift_Report;
 
 namespace Shift_Report.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210116163016_replaceAgentId")]
+    partial class replaceAgentId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,15 +262,13 @@ namespace Shift_Report.Migrations
                     b.Property<int>("BadgeNo")
                         .HasColumnType("int");
 
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("IdentityUserId");
+                    b.HasKey("Id");
 
                     b.ToTable("Agent");
                 });
@@ -567,15 +567,6 @@ namespace Shift_Report.Migrations
                         .IsRequired();
 
                     b.Navigation("Report");
-                });
-
-            modelBuilder.Entity("Shift_Report.Models.AgentModel", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "AspNetUsers")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
-
-                    b.Navigation("AspNetUsers");
                 });
 
             modelBuilder.Entity("Shift_Report.Models.AnnouncementModel", b =>

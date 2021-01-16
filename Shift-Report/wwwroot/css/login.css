@@ -1,0 +1,10 @@
+﻿
+/* Login page  */
+.form-container {
+    position: absolute;
+    top: 20vh;
+    background: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #000;
+}

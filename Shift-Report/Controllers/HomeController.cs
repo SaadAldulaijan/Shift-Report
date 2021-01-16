@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Shift_Report.Models;
 using System;
@@ -13,18 +14,22 @@ namespace Shift_Report.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _ctx;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppDbContext ctx)
         {
             _logger = logger;
+            _ctx = ctx;
         }
 
+        //[Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
+        
         public IActionResult Privacy()
         {
             return View();

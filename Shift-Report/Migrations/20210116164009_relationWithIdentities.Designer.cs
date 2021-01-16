@@ -10,8 +10,8 @@ using Shift_Report;
 namespace Shift_Report.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210114064030_init")]
-    partial class init
+    [Migration("20210116164009_relationWithIdentities")]
+    partial class relationWithIdentities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -254,16 +254,23 @@ namespace Shift_Report.Migrations
 
             modelBuilder.Entity("Shift_Report.Models.AgentModel", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("BadgeNo")
                         .HasColumnType("int");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Agent");
                 });
@@ -562,6 +569,15 @@ namespace Shift_Report.Migrations
                         .IsRequired();
 
                     b.Navigation("Report");
+                });
+
+            modelBuilder.Entity("Shift_Report.Models.AgentModel", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "AspNetUsers")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+
+                    b.Navigation("AspNetUsers");
                 });
 
             modelBuilder.Entity("Shift_Report.Models.AnnouncementModel", b =>
