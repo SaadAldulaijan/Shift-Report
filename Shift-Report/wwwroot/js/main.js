@@ -1,6 +1,11 @@
 ﻿var app = new Vue({
     el: "#app",
     data: {
+        loggedInUser: {
+            username: null,
+            name: null,
+            badgeNo: 0
+        },
         checklistModel: {
             id: 0,
             workplace: false,
@@ -101,6 +106,22 @@
         }
     },
     methods: {
+        async getLoggedInUser() {
+            this.loading = true;
+            await axios.get('api/Auth/GetLoggedInUser')
+                .then(res => {
+                    //console.log(res);
+                    this.loggedInUser = res.data
+                    console.log(this.loggedInUser);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
+        },
+        // -----------------------
         addChecklist(chklst) {
             this.reportModel.checkList = chklst;
             $("#tab-agent").tab('show');
@@ -221,7 +242,7 @@
             this.reportModel.details = reportViewModel.details;
             // TODO:  think of how to get the logged in user
             // maybe session, maybe controller
-            this.reportModel.doneby = 'Saad'
+            this.reportModel.doneby = this.loggedInUser.username;
             console.log(this.reportModel);
             await axios.post('/api/Report', this.reportModel)
                 .then(res => {
@@ -237,6 +258,7 @@
     },
     async mounted() {
         await this.getAgents();
+        await this.getLoggedInUser();
     },
     computed: {
 

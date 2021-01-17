@@ -6,10 +6,35 @@
     <title>@ViewData["Title"] - Shift_Report</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/login.css" />
 </head>
 <body>
     <header>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <a class="navbar-brand" style="padding-left:10px">Call Center Shift Report</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    <div class="form-inline my-2 my-lg-0">
+                        <a class="btn btn-outline-danger my-2 my-sm-0" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
+            @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                    <div class="container">
+                        <img src="~/img/NGHALogo.png" height="80" width="120"/>
+                        <a class="navbar-brand">Call Center - Shift Report</a>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark btn btn-outline-danger" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>*@
+        }
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -19,7 +44,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Communication Department - Developed by Saad Aldulaijan
+            
+                &copy; 2021 - Communication Department -
+            <a class="small">DEVELOPED BY: SAAD ALDULAIJAN</a>
         </div>
     </footer>
     <script src="~/lib/vue/vue.js"></script>

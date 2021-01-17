@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Shift_Report.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Shift_Report.Models;
 using Shift_Report.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,16 @@ namespace Shift_Report.Controllers
     public class AuthController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly AppDbContext _ctx;
 
-        public AuthController(SignInManager<IdentityUser> signInManager)
+        public AuthController(SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
+            AppDbContext ctx)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
+            _ctx = ctx;
         }
         public IActionResult Index()
         {
@@ -31,8 +39,15 @@ namespace Shift_Report.Controllers
         public async Task<IActionResult> Login(LoginViewModel vm)
         {
             var result = await _signInManager.PasswordSignInAsync(vm.Username, vm.Password, false, false);
-            // TODO: should redirect to returnUrl
-            return RedirectToAction("Index", "Home");
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Username or password is incorrect");
+                return View();
+            }
         }
 
         [HttpGet]
@@ -40,6 +55,25 @@ namespace Shift_Report.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("api/Auth/GetLoggedInUser")]
+        public async Task<ActionResult<LoggedInUser>> GetLoggedInUser()
+        {
+            var identityUser = await _userManager.GetUserAsync(User);
+
+            // get agent
+            var agent = _ctx.Agent.FirstOrDefault(x => x.IdentityUserId == identityUser.Id);
+
+
+            return new LoggedInUser
+            {
+                Username = identityUser.UserName,
+                BadgeNo = agent.BadgeNo,
+                Name = agent.Name
+            };
         }
     }
 }

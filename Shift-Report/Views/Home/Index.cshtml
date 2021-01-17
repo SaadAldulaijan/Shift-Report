@@ -112,6 +112,7 @@
                     </table>
                 </div>
                 <button @@click="addChecklist(checklistModel)" class="btn btn-primary">Save & Next</button>
+                @*<button @@click="getLoggedInUser" class="btn btn-primary">Get Logged In</button>*@
             </div>
             <!--End of Report-->
             <!--Agent-->
@@ -378,7 +379,7 @@
                                 <td>{{a.datetime}}</td>
                                 <td>{{a.subject}}</td>
                                 <td>{{a.doneby}}</td>
-                                <td><a @@click="deleteAnnouncement(i)">Remove</a></td>
+                                <td><a @@click="deleteAnnouncement(i)" class="btn btn-danger">Remove</a></td>
                             </tr>
                         </tbody>
                     </table>

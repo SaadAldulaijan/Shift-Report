@@ -1,17 +1,62 @@
 ﻿@model LoginViewModel
 
-@{ 
+@{
 
 }
 
-<form asp-controller="Auth" asp-action="Login" method="post">
-    <div>
-        <label>Username</label>
-        <input asp-for="Username" />
+<link rel="stylesheet" href="~/css/login.css" />
+
+
+
+<div class="middle-box loginscreen text-center animated fadeInDown">
+    <div class="ibox" id="ibox1">
+        <div class="ibox-title">
+            <img src="~/img/logo.png" alt="logo">
+        </div>
+        <div class="ibox-content">
+            <div class="title">
+                <h2><span class="text">Call Center Shift Report</span></h2>
+                <i class="text-right"><span>Communication Department </span></i>
+            </div>
+            <form asp-controller="Auth" asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <br />
+                <input asp-for="Username" type="text" class="form-control" placeholder="Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+                <br />
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <br />
+                <br />
+                <input type="submit" value="Login" class="btn-outline btn-primary" />
+            </form>
+        </div>
     </div>
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" />
-    </div>
-    <input type="submit" value="Log In" />
-</form>
+</div>
+
+
+
+@*<section class="container-fluid">
+        <section class="row justify-content-center">
+            <section class="col-12 col-sm-6 col-md-3">
+                <div class="form-container">
+                    <h4 class="text-center">Call Center Reporting System</h4>
+                    <form asp-controller="Auth" asp-action="Login" method="post">
+                        <div class="form-group">
+                            <label for="username" class="col-form-label">Username</label>
+                            <input asp-for="Username" type="text" class="form-control" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" id="password">
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-block" value="LOGIN"/>
+                    </form>
+                </div>
+            </section>
+        </section>
+    </section>*@
+
+
+
+
