@@ -34,6 +34,12 @@ namespace Shift_Report.Controllers
             }
 
             var reportModel = await _ctx.Report
+                .Include(x=>x.CheckList)
+                .Include(x=>x.Break)
+                .Include(x=>x.EODPager)
+                .Include(x=>x.EmergencyCode)
+                .Include(x=>x.AccessCode)
+                .Include(x=>x.Announcement)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reportModel == null)
             {
@@ -42,24 +48,6 @@ namespace Shift_Report.Controllers
 
             return View(reportModel);
         }
-
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Id,Shift,DateTime,Details,DoneBy")] ReportModel reportModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _ctx.Add(reportModel);
-        //        await _ctx.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(reportModel);
-        //}
 
         public async Task<IActionResult> Edit(int? id)
         {

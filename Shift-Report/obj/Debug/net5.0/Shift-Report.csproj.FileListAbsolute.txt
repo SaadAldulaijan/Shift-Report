@@ -451,7 +451,6 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runt
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
-C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Create.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Delete.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Details.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Edit.cshtml.g.cs

@@ -4,39 +4,224 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h4 class="text-center"><span class="font-bold">Report: </span>@Html.DisplayFor(model => model.Shift) - @Html.DisplayFor(model => model.DateTime)</h4>
 
 <div>
-    <h4>ReportModel</h4>
+    <h6 class="text-center">Description: @Html.DisplayFor(model => model.Details)</h6>
+    <h6 class="text-center">Created By: @Html.DisplayFor(model => model.DoneBy)</h6>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Shift)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Shift)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Details)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DoneBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DoneBy)
-        </dd>
-    </dl>
+
+    <!--Checklist-->
+    <div class="row">
+        <h6 class="text-center">Checklist</h6>
+        <table class="table table-bordered">
+            <tr>
+                <th>Workplace Clean & Organized</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Workplace)</td>
+                <th>Directories in place& organized</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Directories)</td>
+            </tr>
+            <tr>
+                <th>Boards in place & organized</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Boards)</td>
+                <th>FAX 31455</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Fax1)</td>
+            </tr>
+            <tr>
+                <th>FAX 858-0037</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Fax2)</td>
+                <th>Emergency line 32999</th>
+                <td>@Html.DisplayFor(model => model.CheckList.EmergencyLine)</td>
+            </tr>
+            <tr>
+                <th>Hoteline 911</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Hotline)</td>
+                <th>Backup hotline 30045</th>
+                <td>@Html.DisplayFor(model => model.CheckList.BackupHotline)</td>
+            </tr>
+            <tr>
+                <th>Code Yellow 32322</th>
+                <td>@Html.DisplayFor(model => model.CheckList.CodeYellow)</td>
+                <th>Paging Phone 30043</th>
+                <td>@Html.DisplayFor(model => model.CheckList.PagingTelephone)</td>
+            </tr>
+            <tr>
+                <th>Overhead Announcement</th>
+                <td>@Html.DisplayFor(model => model.CheckList.Overhead)</td>
+            </tr>
+        </table>
+    </div>
+    <!--Equipment-->
+    <div class="row">
+        <h6 class="text-center">Equipment</h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Issued Batteries</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfBattery)</td>
+                    <th>Available Pagers</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfPager)</td>
+                </tr>
+                <tr>
+                    <th>No. of Undelivered FAX</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfUndeliveredFax)</td>
+                    <th>No. of Dictaphones</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfDictaphone)</td>
+                </tr>
+                <tr>
+                    <th>No. of Headphones</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfHeadphone)</td>
+                    <th>No. of Radiophones</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfRadiophones)</td>
+                </tr>
+                <tr>
+                    <th>No. of Radiophones Charger</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfRadiophonesCharger)</td>
+                    <th>No. of Remote Control</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfRemoteControl)</td>
+                </tr>
+                <tr>
+                    <th>No. of Chairs</th>
+                    <td>@Html.DisplayFor(model => model.CheckList.NoOfChair)</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <!--Agent Breaks-->
+    <div class="row">
+        <h6 class="text-center">Agents Breaks</h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Agent Name</th>
+                    <th>Remark</th>
+                    <th>Out</th>
+                    <th>In</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Break)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.AgentName)</td>
+                        <td>@Html.DisplayFor(model => item.Remark)</td>
+                        <td>@Html.DisplayFor(model => item.Out)</td>
+                        <td>@Html.DisplayFor(model => item.In)</td>
+                        <td>@Html.DisplayFor(model => item.Comment)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!--EOD Pager-->
+    <div class="row">
+        <h6 class="text-center">EOD Pager</h6>
+        <table class="table table-bordered">
+            <tr>
+                <th>Received From</th>
+                <td>@Html.DisplayFor(x => x.EODPager.PagerReceivedFrom)</td>
+                <th>Received At</th>
+                <td>@Html.DisplayFor(x => x.EODPager.PagerReceivedAt)</td>
+                <th>Received By</th>
+                <td>@Html.DisplayFor(x => x.EODPager.PagerReceivedBy)</td>
+            </tr>
+            <tr>
+                <th>Issued To</th>
+                <td>@Html.DisplayFor(x => x.EODPager.PagerIssuedTo)</td>
+                <th>Issued At</th>
+                <td>@Html.DisplayFor(x => x.EODPager.PagerIssuedAt)</td>
+                <th>Issued By</th>
+                <td>@Html.DisplayFor(x => x.EODPager.PagerIssuedBy)</td>
+            </tr>
+        </table>
+    </div>
+    <!--EmergencyCode-->
+    <div class="row">
+        <h6 class="text-center">Emergency Codes</h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Location</th>
+                    <th>Caller Badge</th>
+                    <th>Caller Extension</th>
+                    <th>Received By</th>
+                    <th>Time Received</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.EmergencyCode)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.Code)</td>
+                        <td>@Html.DisplayFor(x => item.Location)</td>
+                        <td>@Html.DisplayFor(x => item.CallerBadge)</td>
+                        <td>@Html.DisplayFor(x => item.CallerExt)</td>
+                        <td>@Html.DisplayFor(x => item.ReceivedBy)</td>
+                        <td>@Html.DisplayFor(x => item.TimeReceived)</td>
+                        <td>@Html.DisplayFor(x => item.Comment)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!--AccessCode-->
+    <div class="row">
+        <h6 class="text-center">Access Codes</h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Access Type</th>
+                    <th>Caller Name</th>
+                    <th>Caller Badge</th>
+                    <th>Call Receiver</th>
+                    <th>Telephone No</th>
+                    <th>Agent Telephone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AccessCode)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.AccessType)</td>
+                        <td>@Html.DisplayFor(x => item.CallerName)</td>
+                        <td>@Html.DisplayFor(x => item.CallerBadge)</td>
+                        <td>@Html.DisplayFor(x => item.CallReceiver)</td>
+                        <td>@Html.DisplayFor(x => item.TelephoneNo)</td>
+                        <td>@Html.DisplayFor(x => item.TelephoneNo)</td>
+                        <td>@Html.DisplayFor(x => item.AgentTelephone)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!--Announcement-->
+    <div class="row">
+        <h6 class="text-center">Access Codes</h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Time</th>
+                    <th>Done By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Announcement)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.Subject)</td>
+                        <td>@Html.DisplayFor(x => item.DateTime)</td>
+                        <td>@Html.DisplayFor(x => item.DoneBy)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
     <a asp-action="Index">Back to List</a>
 </div>
