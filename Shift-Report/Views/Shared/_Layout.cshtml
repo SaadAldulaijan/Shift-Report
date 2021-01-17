@@ -16,6 +16,13 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
                     </ul>
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <div class="form-inline my-2 my-lg-0">
+                            <a class="btn btn-outline-primary my-2 my-sm-0" style="margin:10px" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                        </div>
+                    }
                     <div class="form-inline my-2 my-lg-0">
                         <a class="btn btn-outline-danger my-2 my-sm-0" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
                     </div>

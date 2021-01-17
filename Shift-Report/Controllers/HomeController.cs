@@ -30,6 +30,7 @@ namespace Shift_Report.Controllers
         }
 
         //[Authorize]
+        // TODO: Remove this view
         
         public IActionResult Privacy()
         {
