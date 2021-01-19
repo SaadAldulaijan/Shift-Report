@@ -5,6 +5,7 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Pu
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\img\logo.png
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\img\NGHALogo.PNG
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\js\main-production.js
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\js\main.js
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -40,7 +41,9 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Pu
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\vue\axios.js
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\vue\axios.min.js
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\vue\vue.js
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\vue\vue.min.js
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\appsettings.json
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\PubTmp\Out\Shift-Report.dll

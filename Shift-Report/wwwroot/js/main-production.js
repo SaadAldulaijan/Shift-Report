@@ -106,9 +106,9 @@
         }
     },
     methods: {
-         getLoggedInUser() {
+         async getLoggedInUser() {
             this.loading = true;
-            axios.get('/GetLoggedInUser')
+            await axios.get('http://10.32.51.124/CallCenter/GetLoggedInUser')
                 .then(res => {
                     //console.log(res);
                     this.loggedInUser = res.data
@@ -131,7 +131,7 @@
         //---------------------------
          getAgents() {
             this.loading = true;
-             axios.get('/api/Report/GetAgents')
+             axios.get('http://10.32.51.124/CallCenter/api/Report/GetAgents')
                 .then(res => {
                     this.agents = res.data;
                     console.log(res.data);
@@ -243,7 +243,7 @@
             // maybe session, maybe controller
             this.reportModel.doneby = this.loggedInUser.username;
             console.log(this.reportModel);
-             axios.post('/api/Report/PostReport', this.reportModel)
+             axios.post('http://10.32.51.124/CallCenter/api/Report/PostReport', this.reportModel)
                 .then(res => {
                     console.log(res.data);
                 })
@@ -255,9 +255,12 @@
                 });
         }
     },
-     mounted() {
+     async mounted() {
          this.getAgents();
-         this.getLoggedInUser();
+         await this.getLoggedInUser();
+    },
+    async created() {
+        await this.getLoggedInUser();
     },
     computed: {
 

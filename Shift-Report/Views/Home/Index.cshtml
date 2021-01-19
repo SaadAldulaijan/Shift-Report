@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     ViewData["Title"] = "Report";
 }
 
@@ -408,3 +408,12 @@
         <!-- End of Form section-->
     </main>
 </div>
+
+@section Scripts {
+    <environment include="Development">
+        <script src="~/js/main.js" asp-append-version="true"></script>
+    </environment>
+    <environment include="Production">
+        <script src="~/js/main-production.js" asp-append-version="true"></script>
+    </environment>
+}

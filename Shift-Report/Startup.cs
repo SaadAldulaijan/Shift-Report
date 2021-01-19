@@ -45,7 +45,7 @@ namespace Shift_Report
             services.AddAuthorization(options => 
             {
                 options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
-                options.AddPolicy("Manager", policy => policy.RequireClaim("Manager"));
+                options.AddPolicy("User", policy => policy.RequireClaim("User"));
             });
 
         }

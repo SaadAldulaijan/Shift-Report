@@ -51,16 +51,26 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            
-                &copy; 2021 - Communication Department -
+
+            &copy; 2021 - Communication Department -
             <a class="small">DEVELOPED BY: SAAD ALDULAIJAN</a>
         </div>
     </footer>
-    <script src="~/lib/vue/vue.js"></script>
-    <script src="~/lib/vue/axios.js"></script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/main.js" asp-append-version="true"></script>
+
+
+    <environment include="Development">
+        <script src="~/lib/vue/vue.js"></script>
+        <script src="~/lib/vue/axios.js"></script>
+    </environment>
+    <environment include="Production">
+        <script src="~/lib/vue/vue.min.js"></script>
+        <script src="~/lib/vue/axios.min.js"></script>
+    </environment>
+
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

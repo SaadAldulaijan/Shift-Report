@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 
 namespace Shift_Report.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
     public class ReportController : ControllerBase
     {
         private readonly AppDbContext _ctx;

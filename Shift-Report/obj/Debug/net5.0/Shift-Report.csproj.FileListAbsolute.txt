@@ -354,7 +354,6 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runt
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.csprojAssemblyReference.cache
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.GeneratedMSBuildEditorConfig.editorconfig
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.AssemblyInfoInputs.cache
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.AssemblyInfo.cs
@@ -370,7 +369,6 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shif
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.TagHelpers.output.cache
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.RazorCoreGenerate.cache
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -455,3 +453,4 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razo
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Details.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Edit.cshtml.g.cs
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Debug\net5.0\Shift-Report.csprojAssemblyReference.cache

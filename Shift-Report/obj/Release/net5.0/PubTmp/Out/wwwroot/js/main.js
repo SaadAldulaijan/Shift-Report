@@ -106,9 +106,9 @@
         }
     },
     methods: {
-        async getLoggedInUser() {
+         getLoggedInUser() {
             this.loading = true;
-            await axios.get('api/Auth/GetLoggedInUser')
+            axios.get('/GetLoggedInUser')
                 .then(res => {
                     //console.log(res);
                     this.loggedInUser = res.data
@@ -129,13 +129,12 @@
         },
 
         //---------------------------
-        async getAgents() {
+         getAgents() {
             this.loading = true;
-            await axios.get('/api/Report')
+             axios.get('/api/Report/GetAgents')
                 .then(res => {
-                    console.log(res);
                     this.agents = res.data;
-                    console.log(this.agents);
+                    console.log(res.data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -236,7 +235,7 @@
         },
 
         // ------------------
-        async generateReport(reportViewModel) {
+         generateReport(reportViewModel) {
             this.loading = true;
             this.reportModel.shift = reportViewModel.shift;
             this.reportModel.details = reportViewModel.details;
@@ -244,7 +243,7 @@
             // maybe session, maybe controller
             this.reportModel.doneby = this.loggedInUser.username;
             console.log(this.reportModel);
-            await axios.post('/api/Report', this.reportModel)
+             axios.post('/api/Report/PostReport', this.reportModel)
                 .then(res => {
                     console.log(res.data);
                 })
@@ -256,9 +255,9 @@
                 });
         }
     },
-    async mounted() {
-        await this.getAgents();
-        await this.getLoggedInUser();
+     mounted() {
+         this.getAgents();
+         this.getLoggedInUser();
     },
     computed: {
 

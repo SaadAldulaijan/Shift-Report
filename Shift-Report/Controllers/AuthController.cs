@@ -57,14 +57,19 @@ namespace Shift_Report.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+
         [HttpGet]
-        [Route("api/Auth/GetLoggedInUser")]
+        [Route("/GetLoggedInUser")]
+        [Authorize]
         public async Task<ActionResult<LoggedInUser>> GetLoggedInUser()
         {
             var identityUser = await _userManager.GetUserAsync(User);
 
-            // get agent
+            if (identityUser == null)
+            {
+                return BadRequest();
+            }
+
             var agent = _ctx.Agent.FirstOrDefault(x => x.IdentityUserId == identityUser.Id);
 
 

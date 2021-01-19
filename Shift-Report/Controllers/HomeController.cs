@@ -15,27 +15,17 @@ namespace Shift_Report.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AppDbContext _ctx;
 
-        public HomeController(ILogger<HomeController> logger, AppDbContext ctx)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _ctx = ctx;
         }
 
-        //[Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
-        //[Authorize]
-        // TODO: Remove this view
-        
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
