@@ -49,53 +49,6 @@ namespace Shift_Report.Controllers
             return View(reportModel);
         }
 
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var reportModel = await _ctx.Report.FindAsync(id);
-        //    if (reportModel == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(reportModel);
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,Shift,DateTime,Details,DoneBy")] ReportModel reportModel)
-        //{
-        //    if (id != reportModel.Id)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _ctx.Update(reportModel);
-        //            await _ctx.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!ReportModelExists(reportModel.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(reportModel);
-        //}
-
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
