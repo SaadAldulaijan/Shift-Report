@@ -1,0 +1,43 @@
+﻿@model CallerModel
+@{
+    ViewData["Title"] = "Form";
+}
+
+<div class="container">
+    <form asp-action="PostRecall">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!--Agent-->
+        <div class="form-group">
+            <label class="control-label">Employee</label>
+            <select asp-for="AgentId" asp-items="ViewBag.Agents" class="form-control"></select>
+        </div>
+
+        <!--Caller-->
+        <div class="form-group">
+            <label class="control-label">Caller Name</label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+            <label class="control-label">Phone No</label>
+            <input class="form-control" asp-for="PhoneNo" />
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+
+            <label class="control-label">MRN</label>
+            <input class="form-control" asp-for="MRN" />
+            <span asp-validation-for="MRN" class="text-danger"></span>
+
+            <label class="control-label">Inquiry</label>
+            <textarea class="form-control" asp-for="Inquiry"></textarea>
+            <span asp-validation-for="Inquiry" class="text-danger"></span>
+        </div>
+
+        <!--Departments-->
+        <div class="form-group">
+            <label>Department</label>
+            <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control"></select>
+        </div>
+
+        <input class="form-control btn btn-primary" type="submit" value="Submit" />
+    </form>
+</div>

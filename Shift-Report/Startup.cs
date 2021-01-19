@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shift_Report.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace Shift_Report
         {
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.Configure<EmailOptions>(Configuration.GetSection(nameof(EmailOptions)));
+
+            services.AddScoped<EmailService>();
+            services.AddSingleton<IEmailService, EmailService>();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -76,7 +82,7 @@ namespace Shift_Report
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
             });
         }
     }

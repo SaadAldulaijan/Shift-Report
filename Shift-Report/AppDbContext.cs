@@ -21,6 +21,8 @@ namespace Shift_Report
         public DbSet<AccessCodeModel> AccessCode { get; set; }
         public DbSet<AnnouncementModel> Announcement { get; set; }
         public DbSet<AgentModel> Agent { get; set; }
+        public DbSet<CallerModel> Caller { get; set; }
+        public DbSet<DepartmentModel> Department { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
