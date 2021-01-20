@@ -453,3 +453,5 @@ C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Sh
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\ref\Shift-Report.dll
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Shift-Report.pdb
 C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Shift-Report.genruntimeconfig.cache
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Razor\Views\Dashboard\Index.cshtml.g.cs
+C:\temp\repo\Call Center Project\Shift-Report\Shift-Report\obj\Release\net5.0\Razor\Views\Recall\Index.cshtml.g.cs

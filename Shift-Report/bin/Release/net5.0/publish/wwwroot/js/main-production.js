@@ -246,6 +246,7 @@
              axios.post('http://10.32.51.124/CallCenter/api/Report/PostReport', this.reportModel)
                 .then(res => {
                     console.log(res.data);
+                    alert('Report is Created Successfully');
                 })
                 .catch(err => {
                     console.log(err);
