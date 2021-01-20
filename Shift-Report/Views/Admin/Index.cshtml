@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Shift_Report.Models.ReportModel>
+﻿@model AdminViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,45 +6,92 @@
 
 <h1>Admin Panel</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Shift)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Details)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DoneBy)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Shift)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DoneBy)
-            </td>
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<!-- Header Section -->
+
+<nav>
+    <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="true">Reports</a>
+        <a class="nav-item nav-link" id="nav-callers-tab" data-toggle="tab" href="#nav-callers" role="tab" aria-controls="nav-callers" aria-selected="false">Callers</a>
+    </div>
+</nav>
+<!--End of Header section-->
+<!-- Form section-->
+<div class="tab-content">
+    <!--Report-->
+    <div class="tab-pane fade show active" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Shift</th>
+                    <th> Date & Time</th>
+                    <th> Details</th>
+                    <th> Done By</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Reports)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Shift)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Details)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DoneBy)
+                        </td>
+                        <td>
+                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!--Recall-->
+    <div class="tab-pane fade" id="nav-callers" role="tabpanel" aria-labelledby="nav-callers-tab">
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Caller Phone</th>
+                    <th>Caller Name</th>
+                    <th>Sent To</th>
+                    <th>Agent Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Callers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Agent.Name)
+                        </td>
+                        <td>
+                            <a asp-action="CallerDetails" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

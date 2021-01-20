@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Shift_Report;
 using Shift_Report.Models;
+using Shift_Report.ViewModels;
 
 namespace Shift_Report.Controllers
 {
@@ -21,9 +22,14 @@ namespace Shift_Report.Controllers
             _ctx = ctx;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _ctx.Report.ToListAsync());
+            var vm = new AdminViewModel
+            {
+                Reports = _ctx.Report.ToList(),
+                Callers = _ctx.Caller.Include(x=>x.Department).Include(x=>x.Agent).ToList()
+            };
+            return View(vm);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -49,6 +55,24 @@ namespace Shift_Report.Controllers
             return View(reportModel);
         }
 
+        public async Task<IActionResult> CallerDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var callerModel = await _ctx.Caller
+                .Include(x => x.Department)
+                .Include(x => x.Agent)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (callerModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(callerModel);
+        }
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -66,6 +90,7 @@ namespace Shift_Report.Controllers
             return View(reportModel);
         }
 
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -80,5 +105,7 @@ namespace Shift_Report.Controllers
         {
             return _ctx.Report.Any(e => e.Id == id);
         }
+
+
     }
 }

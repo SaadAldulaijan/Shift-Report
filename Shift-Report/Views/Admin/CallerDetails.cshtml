@@ -1,0 +1,45 @@
+﻿@model CallerModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h3>Recall Details</h3>
+    <br />
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th><strong>Caller Name</strong></th>
+            <td>@Html.DisplayFor(x => x.Name)</td>
+
+            <th><strong>Caller Phone No</strong></th>
+            <td>@Html.DisplayFor(x => x.PhoneNo)</td>
+        </tr>
+        <tr>
+            <th><strong>Inquiry</strong></th>
+            <td>@Html.DisplayFor(x => x.Inquiry)</td>
+
+            <th><strong>Caller MRN</strong></th>
+            <td>@Html.DisplayFor(x => x.MRN)</td>
+        </tr>
+        <tr>
+            <th><strong>Call Date & Time</strong></th>
+            <td>@Html.DisplayFor(x => x.CallDateTime)</td>
+
+            <th><strong>Agent Name</strong></th>
+            <td>@Html.DisplayFor(x => x.Agent.Name)</td>
+        </tr>
+        <tr>
+            <th><strong>Agent Badge</strong></th>
+            <td>@Html.DisplayFor(x => x.Agent.BadgeNo)</td>
+
+            <th><strong>Sent To</strong></th>
+            <td>@Html.DisplayFor(x => x.Department.Name)</td>
+        </tr>
+        <tr>
+            <th><strong>Email To</strong></th>
+            <td>@Html.DisplayFor(x => x.Department.Email)</td>
+        </tr>
+    </table>
+</div>
