@@ -31,6 +31,7 @@ namespace Shift_Report.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> PostRecall(CallerModel caller)
         {
             if (ModelState.IsValid)

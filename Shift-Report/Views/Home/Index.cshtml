@@ -300,7 +300,9 @@
                             <lable for="telephone-number">Telephone Number</lable>
                             <input type="number" v-model="accessCodeModel.telephoneno" class="form-control">
                             <lable for="agnetTelephone">Telephone Agent</lable>
-                            <input type="number" v-model="accessCodeModel.agenttelephone" class="form-control">
+                            <select class="form-control" v-model="accessCodeModel.agenttelephone">
+                                <option v-for="agent in agents">{{agent.name}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
